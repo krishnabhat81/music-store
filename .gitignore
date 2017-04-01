@@ -6,6 +6,9 @@
 *.war
 *.ear
 
+### Target Folder ###
+target/
+
 ## Directory-based project format
 .idea/
 # if you remove the above rule, at least ignore user-specific stuff:
