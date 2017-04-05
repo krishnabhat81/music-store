@@ -18,28 +18,29 @@ public class ProductDaoImpl implements ProductDao {
 
     /** ################### ADD PRODUCT ################### **/
     public void addProduct(Product product) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = this.sessionFactory.getCurrentSession();
         session.persist(product);
     }
 
     /** ######################## GET PRODUCT BY ID ################## **/
-    public Product getProductById(String id) {
-        Session session = sessionFactory.getCurrentSession();
-        Product product =  (Product) session.get(Product.class, id);
+    public Product getProductById(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Product product =  (Product) session.get(Product.class, new Integer(id));
         return product;
     }
 
     /** ############### GET ALL PRODUCTS ##########################**/
     @SuppressWarnings("unchecked")
     public List<Product> getAllProducts() {
-        Session session = sessionFactory.getCurrentSession();
-        List<Product> products =  session.createQuery("from Product").list();
+        Session session = this.sessionFactory.getCurrentSession();
+        String sql = "FROM Product";
+        List<Product> products =  session.createQuery(sql).list();
         return products;
     }
 
     /** ################ DELETE PRODUCT BY ID ###########################**/
-    public void deleteProduct(String id) {
-        Session session = sessionFactory.getCurrentSession();
+    public void removeProduct(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
         session.delete(getProductById(id));
     }
 }

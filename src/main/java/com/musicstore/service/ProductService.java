@@ -8,9 +8,9 @@ public interface ProductService {
 
     void addProduct(Product product);
 
-    Product getProductById(String id);
+    Product getProductById(int id);
 
     List<Product> getAllProducts();
 
-    void deleteProduct(String id);
+    void removeProduct(int id);
 }

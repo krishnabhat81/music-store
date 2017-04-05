@@ -3,7 +3,6 @@ package com.musicstore.service.impl;
 import com.musicstore.dao.ProductDao;
 import com.musicstore.model.Product;
 import com.musicstore.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,20 +17,23 @@ public class ProductServiceImpl implements ProductService {
         this.productDao = productDao;
     }
 
-
+    @Transactional
     public void addProduct(Product product) {
         this.productDao.addProduct(product);
     }
 
-    public Product getProductById(String id) {
-        return null;
+    @Transactional
+    public Product getProductById(int id) {
+       return productDao.getProductById(id);
     }
 
+    @Transactional
     public List<Product> getAllProducts() {
-        return null;
+        return productDao.getAllProducts();
     }
 
-    public void deleteProduct(String id) {
-
+    @Transactional
+    public void removeProduct(int id) {
+        productDao.removeProduct(id);
     }
 }
