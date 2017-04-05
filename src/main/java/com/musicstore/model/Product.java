@@ -1,6 +1,14 @@
 package com.musicstore.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "PRODUCT")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int productId;
     private String productName;
     private String productCategory;
     private String productDescription;
@@ -9,6 +17,14 @@ public class Product {
     private String productStatus;
     private int unitInStock;
     private String productManufacturer;
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 
     public String getProductName() {
         return productName;
