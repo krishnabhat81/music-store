@@ -53,6 +53,7 @@ public class HomeController {
         return "productInventory";
     }
 
+    /** DISPLAY ADD PRODUCT FORM**/
     @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.GET)
     public String addProduct(Model model) {
         Product product = new Product();
@@ -64,11 +65,21 @@ public class HomeController {
         return "addProduct";
     }
 
+    /** ADD PRODUCT IMPLEMENTATION**/
     @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
     public String  addProductPost(@ModelAttribute("product") Product product) {
         productService.addProduct(product);
 
         return "redirect:/admin/productInventory";
     }
+
+    /** REMOVE PRODUCT IMPLEMENTATION**/
+    @RequestMapping(value = "/admin/productInventory/deleteProduct/{productId}", method = RequestMethod.GET)
+    public String  deleteProduct(@PathVariable("productId") int productId)  {
+        productService.removeProduct(productId);
+
+        return "redirect:/admin/productInventory";
+    }
+
 
 }

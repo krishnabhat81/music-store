@@ -20,6 +20,7 @@ public class ProductDaoImpl implements ProductDao {
     public void addProduct(Product product) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(product);
+
     }
 
     /** ######################## GET PRODUCT BY ID ################## **/
