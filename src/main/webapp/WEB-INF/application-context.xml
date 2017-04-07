@@ -49,4 +49,11 @@
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
 
+    <beans:bean id="multipartResolver"
+                class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+        <beans:property name="maxUploadSize" value="10240000" />
+
+    </beans:bean>
+
 </beans:beans>

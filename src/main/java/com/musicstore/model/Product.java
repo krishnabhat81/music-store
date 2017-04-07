@@ -1,6 +1,8 @@
 package com.musicstore.model;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,9 @@ public class Product {
     private String productStatus;
     private int unitInStock;
     private String productManufacturer;
+
+    @Transient
+    private MultipartFile productImage;
 
     public int getProductId() {
         return productId;
@@ -88,5 +93,13 @@ public class Product {
 
     public void setProductManufacturer(String productManufacturer) {
         this.productManufacturer = productManufacturer;
+    }
+
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
     }
 }

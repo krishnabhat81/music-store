@@ -10,7 +10,8 @@
     <packaging>war</packaging>
 
     <properties>
-        <java-version>1.8</java-version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <org.springframework-version>4.0.3.RELEASE</org.springframework-version>
         <hibernate.version>4.3.5.Final</hibernate.version>
     </properties>
@@ -84,6 +85,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -98,6 +100,20 @@
             <version>1.1.2</version>
         </dependency>
         <!-- ######### END OF SERVLET #####################-->
+
+     <!-- ############ FILE UPLOAD SETTING ################## -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
 
     </dependencies>
 
