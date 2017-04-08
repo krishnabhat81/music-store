@@ -17,6 +17,7 @@
         <div class="form-group">
             <label for="name">Name</label>
             <form:input path="productName" id="name" cssClass="form-control"></form:input>
+            <form:errors path="productName" cssStyle="color: red" />
         </div>
 
         <div class="form-group">
@@ -34,6 +35,7 @@
         <div class="form-group">
             <label for="price">Price</label>
             <form:input path="productPrice" id="price" cssClass="form-control"></form:input>
+            <form:errors path="productPrice" cssStyle="color: red" />
         </div>
 
         <div class="form-group">
@@ -51,6 +53,7 @@
         <div class="form-group">
             <label for="unitInStock">Unit In Stock</label>
             <form:input path="unitInStock" id="unitInStock" cssClass="form-control"></form:input>
+            <form:errors path="unitInStock" cssStyle="color: red" />
         </div>
 
         <div class="form-group">

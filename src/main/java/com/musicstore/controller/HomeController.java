@@ -29,11 +29,14 @@ public class HomeController {
     @Autowired
     private ProductService productService;
 
+    /** ############### HOME PAGE ####################### **/
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() {
         return "home";
     }
 
+
+    /** #################### PRODUCT LIST PAGE #####################**/
     @RequestMapping(value = "productList", method = RequestMethod.GET)
     public String getProduct(Model model) {
         List<Product> products = productService.getAllProducts();
@@ -42,6 +45,8 @@ public class HomeController {
         return "productList";
     }
 
+
+    /** ################## VIEW PRODUCT BY ID PAGE ####################### **/
     @RequestMapping(value = "productList/viewProduct/{productId}", method = RequestMethod.GET)
     public String getProductById(@PathVariable int productId, Model model){
         Product product = productService.getProductById(productId);
@@ -50,12 +55,15 @@ public class HomeController {
         return "viewProduct";
     }
 
+    /** ############## ADMIN PAGE #######################  **/
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin() {
 
         return "admin";
     }
 
+
+    /** ################ ADMIN PRODUCT INVENTORY PAGE ####################################### **/
     @RequestMapping(value = "/admin/productInventory", method = RequestMethod.GET)
     public String productInventory(Model model) {
         List<Product> products = productService.getAllProducts();
