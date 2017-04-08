@@ -31,6 +31,9 @@
                     <td><a href="<spring:url value="/productList/viewProduct/${product.productId}" />">
                         <span class="glyphicon glyphicon-info-sign" />
                         </a>
+                        <a href="<spring:url value="/admin/productInventory/editProduct/${product.productId}" />">
+                            <span class="glyphicon glyphicon-pencil"/>
+                        </a>
                     </td>
                 </tr>
             </c:forEach>

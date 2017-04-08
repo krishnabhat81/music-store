@@ -36,4 +36,9 @@ public class ProductServiceImpl implements ProductService {
     public void removeProduct(int id) {
         productDao.removeProduct(id);
     }
+
+    @Transactional
+    public void editProduct(Product product) {
+        this.productDao.editProduct(product);
+    }
 }

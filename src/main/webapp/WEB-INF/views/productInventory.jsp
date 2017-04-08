@@ -34,6 +34,9 @@
                         <a href="<spring:url value="/admin/productInventory/deleteProduct/${product.productId}" />">
                             <span class="glyphicon glyphicon-remove-sign"/>
                         </a>
+                        <a href="<spring:url value="/admin/productInventory/editProduct/${product.productId}" />">
+                            <span class="glyphicon glyphicon-pencil"/>
+                        </a>
                     </td>
                 </tr>
             </c:forEach>

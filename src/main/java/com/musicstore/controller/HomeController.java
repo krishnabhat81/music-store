@@ -117,5 +117,35 @@ public class HomeController {
         return "redirect:/admin/productInventory";
     }
 
+    /** ############ EDIT PRODUCT FORM DISPLAY ############## **/
+    @RequestMapping(value = "/admin/productInventory/editProduct/{productId}", method = RequestMethod.GET)
+    public String editProduct(@PathVariable("productId") int productId, Model model) {
+
+        Product product = productService.getProductById(productId);
+        model.addAttribute("product", product);
+        return "editProduct";
+    }
+
+    /** ################## EDIT PRODUCT POST METHOD IMPLEMENTATION ########################### **/
+    @RequestMapping(value = "/admin/productInventory/editProduct", method = RequestMethod.POST)
+    public String editProductPost(@ModelAttribute("product") Product product, HttpServletRequest request) {
+
+        MultipartFile productImage = product.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + product.getProductId() + ".png");
+
+        if (productImage != null && !productImage.isEmpty()) {
+
+            try {
+                productImage.transferTo(new File(path.toString()));
+            } catch (IOException ex) {
+                throw  new RuntimeException("Product image saving failed", ex);
+            }
+
+        }
+        productService.editProduct(product);
+        return "redirect:/admin/productInventory";
+    }
+
 
 }
