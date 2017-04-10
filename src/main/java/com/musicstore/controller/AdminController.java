@@ -28,7 +28,9 @@ public class AdminController {
     @Autowired
     private ProductService productService;
 
-    /** ############## ADMIN PAGE #######################  **/
+    /**
+     * ############## ADMIN PAGE #######################
+     **/
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin() {
 
@@ -36,7 +38,9 @@ public class AdminController {
     }
 
 
-    /** ################ ADMIN PRODUCT INVENTORY PAGE ####################################### **/
+    /**
+     * ################ ADMIN PRODUCT INVENTORY PAGE #######################################
+     **/
     @RequestMapping(value = "/admin/productInventory", method = RequestMethod.GET)
     public String productInventory(Model model) {
         List<Product> products = productService.getAllProducts();
@@ -45,7 +49,9 @@ public class AdminController {
         return "productInventory";
     }
 
-    /** DISPLAY ADD PRODUCT FORM**/
+    /**
+     * DISPLAY ADD PRODUCT FORM
+     **/
     @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.GET)
     public String addProduct(Model model) {
         Product product = new Product();
@@ -57,11 +63,13 @@ public class AdminController {
         return "addProduct";
     }
 
-    /** ADD PRODUCT IMPLEMENTATION**/
+    /**
+     * ADD PRODUCT IMPLEMENTATION
+     **/
     @RequestMapping(value = "/admin/productInventory/addProduct", method = RequestMethod.POST)
-    public String  addProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request) {
+    public String addProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request) {
 
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "addProduct";
         }
 
@@ -84,9 +92,11 @@ public class AdminController {
         return "redirect:/admin/productInventory";
     }
 
-    /** REMOVE PRODUCT IMPLEMENTATION**/
+    /**
+     * REMOVE PRODUCT IMPLEMENTATION
+     **/
     @RequestMapping(value = "/admin/productInventory/deleteProduct/{productId}", method = RequestMethod.GET)
-    public String  deleteProduct(@PathVariable("productId") int productId, HttpServletRequest request)  {
+    public String deleteProduct(@PathVariable("productId") int productId, HttpServletRequest request) {
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
         path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + productId + ".png");
 
@@ -94,7 +104,7 @@ public class AdminController {
 
             try {
                 Files.delete(path);
-            }catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -104,7 +114,9 @@ public class AdminController {
         return "redirect:/admin/productInventory";
     }
 
-    /** ############ EDIT PRODUCT FORM DISPLAY ############## **/
+    /**
+     * ############ EDIT PRODUCT FORM DISPLAY ##############
+     **/
     @RequestMapping(value = "/admin/productInventory/editProduct/{productId}", method = RequestMethod.GET)
     public String editProduct(@PathVariable("productId") int productId, Model model) {
 
@@ -113,11 +125,13 @@ public class AdminController {
         return "editProduct";
     }
 
-    /** ################## EDIT PRODUCT POST METHOD IMPLEMENTATION ########################### **/
+    /**
+     * ################## EDIT PRODUCT POST METHOD IMPLEMENTATION ###########################
+     **/
     @RequestMapping(value = "/admin/productInventory/editProduct", method = RequestMethod.POST)
-    public String editProductPost(@Valid @ModelAttribute("product") Product product,  BindingResult result, HttpServletRequest request) {
+    public String editProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request) {
 
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "editProduct";
         }
 
@@ -130,7 +144,7 @@ public class AdminController {
             try {
                 productImage.transferTo(new File(path.toString()));
             } catch (IOException ex) {
-                throw  new RuntimeException("Product image saving failed", ex);
+                throw new RuntimeException("Product image saving failed", ex);
             }
 
         }
